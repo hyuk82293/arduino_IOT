@@ -1,0 +1,21 @@
+import processing.serial.*;
+import processing.net.*;
+Server s;
+Client c;
+Serial p;
+
+void setup() {
+  p = new Serial(this,"COM3",9600);
+  s = new Server(this, 12345);
+}
+
+void draw(){
+  c =s.available();
+  if(c!=null){
+    String m=c.readString();
+    m = m.substring(m.length()-1);
+    p.write(m);
+    if(m.indexOf("1")==0) p.write(1);
+    if(m.indexOf("0")==0) p.write(0);
+  }
+}
