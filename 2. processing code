@@ -1,3 +1,4 @@
+Serial p;
 Server s;
 Client c;
 void setup(){
